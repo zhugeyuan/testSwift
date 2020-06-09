@@ -246,3 +246,5 @@ print(MemoryLayout<Season>.alignment)//1
 print(MemoryLayout<PassWord>.size)//33 同等上面pwd变量
 print(MemoryLayout<PassWord>.stride)//40
 print(MemoryLayout<PassWord>.alignment)//8
+
+
