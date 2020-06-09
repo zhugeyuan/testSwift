@@ -248,3 +248,4 @@ print(MemoryLayout<PassWord>.stride)//40
 print(MemoryLayout<PassWord>.alignment)//8
 
 print("111")
+print("1122")
