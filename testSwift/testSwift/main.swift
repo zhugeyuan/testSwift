@@ -247,4 +247,4 @@ print(MemoryLayout<PassWord>.size)//33 同等上面pwd变量
 print(MemoryLayout<PassWord>.stride)//40
 print(MemoryLayout<PassWord>.alignment)//8
 
-
+print("111")
