@@ -247,5 +247,301 @@ print(MemoryLayout<PassWord>.size)//33 同等上面pwd变量
 print(MemoryLayout<PassWord>.stride)//40
 print(MemoryLayout<PassWord>.alignment)//8
 
-print("111")
-print("1122")
+//原始值
+enum PokerSuit : Character {
+    case spade = "♠️"
+    case heart = "♥️"
+    case diamond = "♦️"
+    case club = "♣️"
+}
+var suit = PokerSuit.spade
+print(suit)//space
+print(suit.rawValue)//"♠️"
+print(PokerSuit.spade.rawValue)//"♠️"
+
+//可选项
+var arr = [1,15,40,29]
+func get(_ index: Int) -> Int? {
+    if index<0 || index>=arr.count {
+        return nil
+    }
+    return arr[index]
+}
+print(get(1))
+print(get(4))
+
+//强制解包
+var age: Int? = 10
+let ageInt: Int = age!
+
+
+let s = "123"
+
+let number = Int(s)
+
+if number != nil {
+    print("number = \(number!)")
+}else{
+    print("number = nil")
+}
+
+//可选项绑定
+//number 已经解绑了不需要加（！）
+if let number = Int(s) {
+    print("字符串转换整数成功：\(number)")
+} else {
+    print("字符串转换整数失败")
+}
+
+enum Season1 :Int {
+    case spring = 1, summer, august, winter
+}
+
+if let season = Season1(rawValue: 1) {
+    switch season {
+    case .spring:
+        print("spring")
+    default:
+        print("other")
+    }
+}else {
+    print("no such reason")
+}
+
+
+if let first = Int("4") {
+    if let second = Int("40") {
+        if first<second && second<100 {
+            print("\(first) < \(second) < 100")
+        }
+    }
+}
+//和上面完全等价
+if let first = Int("4"),
+    let second = Int("40"),
+    first<second && second<100 {
+    print("\(first) < \(second) < 100")
+}
+
+//正整数加起来，负数或非数字停止便利
+let strs = ["10", "20", "abc", "-10", "30"]
+var index = 0
+var sum = 0
+
+while let num = Int(strs[index]), num>0 {
+    sum += num
+    index += 1
+}
+print(sum)
+
+
+//空合并运算符 a ?? b 之间需要空格
+/*
+ **作用**
+如果a 不为nil,就返回 a
+如果a 为nil,就返回 b
+如果b 不是可选项，返回a时会自动解包
+*/
+
+let a: Int? = 1
+let b: Int = 2
+let c = a ?? b
+print(c)
+
+//下面这一串可以用 a??b 表示
+let c1:Int
+if let tmp = a {
+    c1 = tmp
+}else{
+    c1 = b
+}
+
+let A: Int? = 1
+let B: Int? = 2
+// A != 0 || B != 0
+if let C = A ?? B {
+    print(C)
+}
+
+// A != 0 && B != 0
+if let C = A,
+    let D = B {
+    print(C,D)
+}
+
+/*
+ 
+ ✍当guard语句的条件为true时，就会跳过guard语句
+ ✍guard语句特别适合用来 “提前退出”
+ ✍当使用guard语句进行可选项绑定时，绑定的常量(let)、变量(var)也能在外层作用域中使用
+
+ */
+func login(_ info: [String : String]) {
+//    let username: String
+//    if let tmp = info["username"] {
+//        username = tmp
+//    }else{
+//        print("no username")
+//        return
+//    }
+//
+//    let password: String
+//    if let tmp = info["password"] {
+//        password = tmp
+//    }else{
+//        print("no password")
+//        return
+//    }
+    
+    
+    guard let username = info["username"] else {
+        print("no username")
+        return
+    }
+    
+    guard let password = info["password"] else {
+        print("no password")
+        return
+    }
+    
+    print("username is \(username), password is \(password)")
+}
+
+login(["username" : "zhuge", "password": "123"])
+
+//隐式解包
+/*
+ ☼ 在某些情况下，可选项一旦被设定值之后，就会一直拥有值
+ ☼ 在某些情况下，可以去掉检查，也不必每次访问的时候都进行解包，因为它能确定每次访问的时候都有值
+ ☼ 可以在类型后面加个！定义一个隐式解包的可选项
+
+ */
+var num1: Int! = 10
+let num2: Int = num1
+
+if num1 != nil {
+    num1 = 40
+}
+if let num3 = num1 {
+    print(num3)
+}
+
+
+let Age: Int? = 10
+print("age is \(Age!)")
+print("age is \(String(describing: Age))")
+print("age is \(Age ?? 0)")
+
+//多重可选项
+let number1: Int? = nil
+let number2: Int?? = 10
+let number3: Int?? = nil
+
+print(number1 == number3)
+//使用lldb指令 frame variable -R 或者fr v -R查看区别
+
+//let stru = structAndClass()
+
+
+struct Point {
+    var x: Int = 0
+    var y: Int = 0
+}
+struct Point1 {
+    var x: Int
+    var y: Int
+    //自定义初始化器
+    init() {
+        self.x = 0
+        self.y = 0
+    }
+}
+
+struct Point2 {
+    var x: Int
+    var y: Int
+    //自定义初始化器
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+}
+//初始化器 Point和Point1完全等效
+//let p = Point()
+//let p = Point1()
+
+let p = Point2(x: 1, y: 2)
+
+
+//编译器并没有为类自动生成可以传入参数的初始化器
+//如果类的所有成员都给定初始值，编译器就会自动生成无参的初始化器
+class Point3 {
+    var x: Int = 0
+    var y: Int = 0
+}
+class Point4 {
+    var x: Int
+    var y: Int
+    //自定义初始化器
+    init() {
+        self.x = 0
+        self.y = 0
+    }
+}
+
+class Point5 {
+    var x: Int
+    var y: Int
+    //自定义初始化器
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+}
+// Point3和Point4完全等效
+
+
+
+//结构体和类的本质区别
+//结构体是值类型（栈空间）类是引用类型（指针类型）（堆空间）
+
+//值类型 深拷贝 所有p1不会改变
+//值类型 swift标准库 String Array Dictionary Set 采用了Copy On Write 技术 即当有“写”的操作的时候s2 才会深拷贝
+//建议：不需要修改的尽量用 let
+var p1 = Point2(x:10, y:20)
+var p2 = p1
+p2.x = 100
+p2.y = 200
+
+var s1 = "Jack"
+var s2 = s1
+s2.append("_Tom")
+//s1 Jack
+//s3 Jack_Tom
+
+
+
+//引用类型 引用赋值给 let var 或者函数传参，是将内存地址拷贝一份，是浅拷贝
+var s3 = Point5(x: 10, y: 20)
+var s4 = s3
+
+
+//值类型 引用类型 let
+let p3 = Point2(x:10, y:20)
+//p3 = Point2(x:11, y:22)//报错
+//p3.x = 11//报错
+
+let s5 = Point5(x: 10, y: 20)
+//s5 = Point5(x: 10, y: 20)//报错
+s5.x = 11//修改成员是可以的
+
+
+//闭包
+//通过func定义一个函数
+func sum1(_ v1: Int,_ v2: Int) -> Int { return v1+v2 }
+
+//通过闭包定义函数
+var fnn = {
+    (v1: Int, v2: Int) -> Int in
+    return v1 + v2
+}
