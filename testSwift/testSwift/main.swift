@@ -547,3 +547,4 @@ var fnn = {
 }
 
 print("ff")
+print("fff")
