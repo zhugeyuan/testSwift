@@ -545,3 +545,5 @@ var fnn = {
     (v1: Int, v2: Int) -> Int in
     return v1 + v2
 }
+
+print("ff")
