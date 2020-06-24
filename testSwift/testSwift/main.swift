@@ -505,8 +505,8 @@ class Point5 {
 //结构体和类的本质区别
 //结构体是值类型（栈空间）类是引用类型（指针类型）（堆空间）
 
-//值类型 深拷贝 所有p1不会改变
-//值类型 swift标准库 String Array Dictionary Set 采用了Copy On Write 技术 即当有“写”的操作的时候s2 才会深拷贝
+//值类型 深拷贝 所以p1不会改变
+//值类型 swift标准库 String Array Dictionary Set 采用了Copy On Write 技术  即s2 = s1时是浅拷贝 当有“写”的操作的时候s2.append("_Tom") s2 才会深拷贝
 //建议：不需要修改的尽量用 let
 var p1 = Point2(x:10, y:20)
 var p2 = p1
@@ -545,5 +545,73 @@ var fnn = {
     (v1: Int, v2: Int) -> Int in
     return v1 + v2
 }
+//可以简写成
+//var fnnn: (Int,Int)->Int = {$0+$1}
 
-print("ff")
+func exec(v1: Int, v2: Int, fn: (Int, Int)->Int ) {
+    print(fn(v1,v2))
+}
+//之前需要定义一个函数 传函数名， 有了闭包可以直接传闭包
+exec(v1: 10, v2: 20, fn: {
+    //省略括号，参数类型，reture
+    v1, v2 in v1 + v2
+    
+    //省略参数 in
+//    $0+$1
+})
+
+//尾随闭包 省略fn:
+exec(v1: 10, v2: 20) {
+    $0+$1
+}
+
+//exec{$0+$1} 只有一个参数且是闭包 exec(){$0+$1} 可以省略()
+
+//数组的排序
+var array = [1,5,3,2]
+//array.sort { (v1: Int, v2: Int) -> Bool in
+//    return v1>v2
+//}
+array.sort {$0>$1}
+print(array)
+
+
+
+print("fnn---\(fnn(2,4))")
+
+class Car {
+    init() {
+        print("car init")
+    }
+    
+    func go()  {
+        print("go")
+    }
+}
+
+class Person {
+    //懒加载
+    lazy var car = Car()
+    
+    init() {
+        print("person init")
+    }
+    
+    func goOut() {
+        self.car.go()
+    }
+}
+
+let per = Person()
+print("----")
+per.goOut()
+
+
+var v9 = 10
+
+
+
+//fp.swift
+print("----fp.swift-----")
+print(com(4))
+print(com1(4))
