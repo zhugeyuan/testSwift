@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA58821D24A86EE600A07431 /* protocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58821C24A86EE600A07431 /* protocal.swift */; };
+		CA58821F24A983E000A07431 /* operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58821E24A983E000A07431 /* operator.swift */; };
+		CA58822124A990D100A07431 /* template.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58822024A990D100A07431 /* template.swift */; };
+		CA58822324A9973D00A07431 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58822224A9973D00A07431 /* extension.swift */; };
+		CA58822724AB091000A07431 /* pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58822624AB091000A07431 /* pop.swift */; };
 		CA6ABCAA24A2F18000D4A13A /* fp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6ABCA924A2F18000D4A13A /* fp.swift */; };
 		CA9E5FFA248DD2F80044C642 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E5FF9248DD2F80044C642 /* main.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +29,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA58821C24A86EE600A07431 /* protocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocal.swift; sourceTree = "<group>"; };
+		CA58821E24A983E000A07431 /* operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = operator.swift; sourceTree = "<group>"; };
+		CA58822024A990D100A07431 /* template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = template.swift; sourceTree = "<group>"; };
+		CA58822224A9973D00A07431 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		CA58822624AB091000A07431 /* pop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pop.swift; sourceTree = "<group>"; };
 		CA6ABCA924A2F18000D4A13A /* fp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fp.swift; sourceTree = "<group>"; };
 		CA9E5FF6248DD2F80044C642 /* testSwift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testSwift; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9E5FF9248DD2F80044C642 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -60,7 +70,12 @@
 			isa = PBXGroup;
 			children = (
 				CA9E5FF9248DD2F80044C642 /* main.swift */,
+				CA58821C24A86EE600A07431 /* protocal.swift */,
+				CA58822024A990D100A07431 /* template.swift */,
+				CA58821E24A983E000A07431 /* operator.swift */,
+				CA58822224A9973D00A07431 /* extension.swift */,
 				CA6ABCA924A2F18000D4A13A /* fp.swift */,
+				CA58822624AB091000A07431 /* pop.swift */,
 			);
 			path = testSwift;
 			sourceTree = "<group>";
@@ -123,6 +138,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA58822124A990D100A07431 /* template.swift in Sources */,
+				CA58821D24A86EE600A07431 /* protocal.swift in Sources */,
+				CA58821F24A983E000A07431 /* operator.swift in Sources */,
+				CA58822724AB091000A07431 /* pop.swift in Sources */,
+				CA58822324A9973D00A07431 /* extension.swift in Sources */,
 				CA9E5FFA248DD2F80044C642 /* main.swift in Sources */,
 				CA6ABCAA24A2F18000D4A13A /* fp.swift in Sources */,
 			);

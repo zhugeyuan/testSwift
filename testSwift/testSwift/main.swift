@@ -480,7 +480,7 @@ class Point3 {
     var y: Int = 0
 }
 class Point4 {
-    var x: Int
+    private(set) var x: Int
     var y: Int
     //自定义初始化器
     init() {
@@ -547,6 +547,7 @@ var fnn = {
 }
 //可以简写成
 //var fnnn: (Int,Int)->Int = {$0+$1}
+//var fnnn: (Int,Int)->Int = (+)
 
 func exec(v1: Int, v2: Int, fn: (Int, Int)->Int ) {
     print(fn(v1,v2))
@@ -613,5 +614,36 @@ var v9 = 10
 
 //fp.swift
 print("----fp.swift-----")
-print(com(4))
-print(com1(4))
+//print(com(4))
+//print(com1(4))
+
+
+//template.swift
+var ss = Stack<String>()
+ss.push("abc")
+
+
+//operator.swift
+var p6 = Point6(2,4)
+//+++p6
+//p6+p6
+
+
+
+//pop.swift
+var str = "1234test1234"
+//print(numberCount(str))
+//print(str.numberCount())
+//print(str.numberCount)
+print(str.mj.numberCount)
+Person().mj.run()
+String.mj.test()
+Person.mj.runrunrun()
+
+str.mj.run()
+
+//print(String() is String.self)//报错
+//print(String() is String.Type)//写法错误
+print(String() is String)
+print(String.self is String.Type)
+print(String.self is MJCompatible.Type)
